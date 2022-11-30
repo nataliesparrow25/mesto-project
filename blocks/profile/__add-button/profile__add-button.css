@@ -1,0 +1,20 @@
+.profile__add-button {
+  background-image: url("../../../images/Plus.svg");
+  border: 2px solid #ffffff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 22px;
+  margin: 0;
+  padding: 23px 73px;
+  right: 0;
+  position: absolute;
+  display: flex;
+  align-self: center;
+}
+
+@media screen and (max-width: 879px) {
+  .profile__add-button {
+    position: relative;
+    padding: 23px 139px;
+  }
+}

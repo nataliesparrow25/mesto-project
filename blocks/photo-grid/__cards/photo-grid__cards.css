@@ -1,0 +1,18 @@
+.photo-grid__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(213px, 1fr));
+  gap: 20px 17px;
+  margin: 0;
+  padding-left: 0;
+  max-width: 880px;
+  list-style: none;
+}
+
+@media screen and (max-width: 879px) {
+  .photo-grid__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px 0;
+  }
+}

@@ -1,0 +1,14 @@
+.button-like {
+  display: block;
+  cursor: pointer;
+  background: transparent;
+  background-image: url(../../images/Heart.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  margin: 0;
+  padding: 11px;
+}
+.button-like:hover {
+  opacity: 0.5;
+}
