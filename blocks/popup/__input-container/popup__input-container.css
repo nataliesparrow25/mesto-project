@@ -2,4 +2,11 @@
   display: flex;
   flex-direction: column;
   row-gap: 30px;
+  padding-bottom: 48px;
+}
+
+@media screen and (max-width: 879px) {
+  .popup__input-container {
+    padding-bottom: 45px;
+  }
 }
