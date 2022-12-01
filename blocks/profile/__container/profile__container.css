@@ -8,5 +8,6 @@
 @media screen and (max-width: 879px) {
   .profile__container {
     gap: 0 10px;
+    justify-content: center;
   }
 }

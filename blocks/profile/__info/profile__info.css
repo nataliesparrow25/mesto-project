@@ -9,5 +9,7 @@
   .profile__info {
     gap: 14px 0;
     margin-bottom: 36px;
+  max-width: 282px;
+
   }
 }
