@@ -3,7 +3,6 @@ let userName = document.querySelector("h1");
 let inputName = document.getElementById("name");
 let popUp = document.getElementById("section-popup");
 let buttonClosePopUp = document.querySelector(".popup__button-close");
-let submitButton = document.querySelector(".popup__button");
 let userDescription = document.querySelector(".profile__user-description");
 let inputDescription = document.getElementById("description");
 
@@ -17,7 +16,8 @@ editButton.addEventListener("click", () => {
   inputDescription.value = userDescription.textContent;
 });
 
-submitButton.addEventListener("click", () => {
+document.querySelector(".popup__admin").addEventListener("submit", (evt) => {
+  evt.preventDefault();
   userName.textContent = inputName.value;
   userDescription.textContent = inputDescription.value;
   closePopUp();
