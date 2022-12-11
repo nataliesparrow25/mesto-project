@@ -124,7 +124,7 @@
     <footer class="footer" aria-label="Футер">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <section class="popup">
+    <section id="section-popup" class="popup">
       <!-- <section class="popup popup_opened"> -->
       <div class="popup__container">
         <button
@@ -136,23 +136,24 @@
           <h2 class="popup__heading">Редактировать профиль</h2>
           <div class="popup__input-container">
             <input
-              value="Жак-Ив Кусто"
               type="text"
               class="popup__item"
               name="name"
+              id="name"
               placeholder="Имя пользователя"
             />
             <input
-              value="Исследователь океана"
               type="text"
               class="popup__item"
               name="description"
+              id="description"
               placeholder="Род деятельности"
             />
           </div>
-          <button type="submit" class="popup__button">Сохранить</button>
+          <button type="button" class="popup__button">Сохранить</button>
         </form>
       </div>
     </section>
+    <script src="script.js"></script>
   </body>
 </html>
