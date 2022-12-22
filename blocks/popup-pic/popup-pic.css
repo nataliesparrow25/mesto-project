@@ -1,4 +1,4 @@
-.popup {
+.popup-pic {
   display: flex;
   position: fixed;
   align-items: center;
@@ -6,8 +6,9 @@
   height: 100%;
   top: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.9);
   visibility: hidden;
+  justify-content: center;
+  opacity: 0;
   transition: 1s opacity, 1s visibility;
 }

@@ -1,0 +1,17 @@
+.button-delete-card {
+  display: block;
+  cursor: pointer;
+  background: transparent;
+  background-image: url(../../images/Bin.svg);
+  background-repeat: no-repeat;
+  background-position: right;
+  border: none;
+  margin: 0;
+  padding: 11px;
+  position:absolute;
+  top: 20px;
+  right: 20px;
+}
+.button-delete-card:hover {
+  opacity: 0.5;
+}
