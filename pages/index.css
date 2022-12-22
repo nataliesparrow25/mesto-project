@@ -18,6 +18,7 @@
 
 @import url(../blocks/photo-grid/photo-grid.css);
 @import url(../blocks/photo-grid/__image/photo-grid__image.css);
+@import url(../blocks/photo-grid/__image/_popup/photo-grid__image_popup.css);
 @import url(../blocks/photo-grid/__card/photo-grid__card.css);
 @import url(../blocks/photo-grid/__card-info/photo-grid__card-info.css);
 @import url(../blocks/photo-grid/__card-name/photo-grid__card-name.css);
@@ -45,4 +46,8 @@
 @import url(../blocks/button-delete-card/button-delete-card.css);
 @import url(../blocks/button-delete-card/_active/button-delete-card_active.css);
 
+@import url(../blocks/popup-pic/popup-pic.css);
+@import url(../blocks/popup-pic/_opened/popup-pic_opened.css);
+@import url(../blocks/popup-pic/__container/popup-pic__container.css);
 
+@import url(../blocks/popup-pic/__text/popup-pic__text.css);

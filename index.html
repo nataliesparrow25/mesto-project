@@ -45,9 +45,7 @@
         class="photo-grid"
         aria-label="Фотографии красивых мест в России"
       >
-        <ul class="photo-grid__cards">
-          
-        </ul>
+        <ul class="photo-grid__cards"></ul>
       </section>
     </main>
     <footer class="footer" aria-label="Футер">
@@ -79,7 +77,9 @@
               placeholder="Род деятельности"
             />
           </div>
-          <button type="submit" class="popup__button" id="button-save-name">Сохранить</button>
+          <button type="submit" class="popup__button" id="button-save-name">
+            Сохранить
+          </button>
         </form>
       </div>
     </section>
@@ -110,8 +110,28 @@
               placeholder="Ссылка на картинку"
             />
           </div>
-          <button type="submit" class="popup__button" id="button-add-card">Создать</button>
+          <button type="submit" class="popup__button" id="button-add-card">
+            Создать
+          </button>
         </form>
+      </div>
+    </section>
+    <section id="section-popup-pic" class="popup-pic">
+      <!-- <section class="popup popup_opened"> -->
+      <div class="popup-pic__container">
+        <button
+          type="button"
+          class="button popup__button-close"
+          id="close_pop-up_pic"
+          aria-label="Закрыть"
+        ></button>
+        <img
+          class="photo-grid__image_popup"
+          src=""
+          alt="Фото"
+          id="popup-pic-img"
+        />
+        <h2 class="popup-pic__text" id="popup-pic-caption"></h2>
       </div>
     </section>
     <template id="grid-card-template">

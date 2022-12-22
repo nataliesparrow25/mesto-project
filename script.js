@@ -71,17 +71,45 @@ function addCard(imgSrc, titleCardValue) {
   cardElement.querySelector(".photo-grid__image").src = imgSrc;
   cardElement.querySelector(".photo-grid__card-name").textContent =
     titleCardValue;
-  
+
+  // Likes
   cardElement
     .querySelector(".button-like")
     .addEventListener("click", function (evt) {
       evt.target.classList.toggle("button-like_active");
     });
-  
+
+  // Delete card
   cardElement
     .querySelector(".button-delete-card")
     .addEventListener("click", function (evt) {
       cardElement.remove();
+    });
+
+  // Pop Up pic
+  let popUpPic = document.getElementById("section-popup-pic");
+  let buttonClosePopUpPic = document.querySelector("#close_pop-up_pic");
+
+  function closePopUpPic() {
+    popUpPic.classList.remove("popup-pic_opened");
+  }
+
+  let popUpPicImg = document.querySelector("#popup-pic-img");
+  let popUpPicCaption = document.querySelector("#popup-pic-caption");
+
+  buttonClosePopUpPic.addEventListener("click", closePopUpPic);
+
+  cardElement
+    .querySelector(".photo-grid__image")
+    .addEventListener("click", function (evt) {
+      console.log("Pop up opened");
+      popUpPic.classList.add("popup-pic_opened");
+      console.log(popUpPic);
+
+      popUpPicImg.src = cardElement.querySelector(".photo-grid__image").src;
+      popUpPicCaption.textContent = cardElement.querySelector(
+        ".photo-grid__card-name"
+      ).textContent;
     });
 
   cardsContainer.prepend(cardElement);
