@@ -41,3 +41,8 @@
 
 @import url(../blocks/button-like/button-like.css);
 @import url(../blocks/button-like/_active/button-like_active.css);
+
+@import url(../blocks/button-delete-card/button-delete-card.css);
+@import url(../blocks/button-delete-card/_active/button-delete-card_active.css);
+
+

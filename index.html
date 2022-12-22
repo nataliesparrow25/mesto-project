@@ -46,78 +46,7 @@
         aria-label="Фотографии красивых мест в России"
       >
         <ul class="photo-grid__cards">
-          <li class="photo-grid__card">
-            <img
-              class="photo-grid__image"
-              src="./images/kirill-pershin-1088404-unsplash.jpg"
-              alt="Карачаевск"
-            />
-            <div class="photo-grid__card-info">
-              <h2 class="photo-grid__card-name">Карачаевск</h2>
-              <button type="button" class="button-like"></button>
-              <!-- <button class=" button-like button-like_active"></button> -->
-            </div>
-          </li>
-          <li class="photo-grid__card">
-            <img
-              class="photo-grid__image"
-              src="./images/kirill-pershin-1404681-unsplash.png"
-              alt="Гора Эльбрус"
-            />
-            <div class="photo-grid__card-info">
-              <h2 class="photo-grid__card-name">Гора Эльбрус</h2>
-              <button type="button" class="button-like"></button>
-              <!-- <button class=" button-like button-like_active"></button> -->
-            </div>
-          </li>
-          <li class="photo-grid__card">
-            <img
-              class="photo-grid__image"
-              src="./images/kirill-pershin-1556355-unsplash.png"
-              alt="Домбай"
-            />
-            <div class="photo-grid__card-info">
-              <h2 class="photo-grid__card-name">Домбай</h2>
-              <button type="button" class="button-like"></button>
-              <!-- <button class=" button-like button-like_active"></button> -->
-            </div>
-          </li>
-          <li class="photo-grid__card">
-            <img
-              class="photo-grid__image"
-              src="./images/kirill-pershin-1404681-unsplash.png"
-              alt="Гора Эльбрус"
-            />
-            <div class="photo-grid__card-info">
-              <h2 class="photo-grid__card-name">Гора Эльбрус</h2>
-              <button type="button" class="button-like"></button>
-              <!-- <button class=" button-like button-like_active"></button> -->
-            </div>
-          </li>
-          <li class="photo-grid__card">
-            <img
-              class="photo-grid__image"
-              src="./images/kirill-pershin-1556355-unsplash.png"
-              alt="Домбай"
-            />
-            <div class="photo-grid__card-info">
-              <h2 class="photo-grid__card-name">Домбай</h2>
-              <button type="button" class="button-like"></button>
-              <!-- <button class=" button-like button-like_active"></button> -->
-            </div>
-          </li>
-          <li class="photo-grid__card">
-            <img
-              class="photo-grid__image"
-              src="./images/kirill-pershin-1088404-unsplash.jpg"
-              alt="Карачаевск"
-            />
-            <div class="photo-grid__card-info">
-              <h2 class="photo-grid__card-name">Карачаево-Черкессия</h2>
-              <button type="button" class="button-like"></button>
-              <!-- <button class=" button-like button-like_active"></button> -->
-            </div>
-          </li>
+          
         </ul>
       </section>
     </main>
@@ -132,7 +61,7 @@
           class="button popup__button-close"
           aria-label="Закрыть"
         ></button>
-        <form class="popup__admin">
+        <form class="popup__admin" id="popup__admin_edit-profile">
           <h2 class="popup__heading">Редактировать профиль</h2>
           <div class="popup__input-container">
             <input
@@ -150,10 +79,51 @@
               placeholder="Род деятельности"
             />
           </div>
-          <button type="submit" class="popup__button">Сохранить</button>
+          <button type="submit" class="popup__button" id="button-save-name">Сохранить</button>
         </form>
       </div>
     </section>
+    <section id="section-popup-add-card" class="popup">
+      <!-- <section class="popup popup_opened"> -->
+      <div class="popup__container">
+        <button
+          type="button"
+          class="button popup__button-close"
+          id="close_pop-up_add-card"
+          aria-label="Закрыть"
+        ></button>
+        <form class="popup__admin" id="popup__admin_add-card">
+          <h2 class="popup__heading">Новое место</h2>
+          <div class="popup__input-container">
+            <input
+              type="text"
+              class="popup__item"
+              name="сard-title"
+              id="card-title"
+              placeholder="Название"
+            />
+            <input
+              type="text"
+              class="popup__item"
+              name="card-url"
+              id="card-url"
+              placeholder="Ссылка на картинку"
+            />
+          </div>
+          <button type="submit" class="popup__button" id="button-add-card">Создать</button>
+        </form>
+      </div>
+    </section>
+    <template id="grid-card-template">
+      <li class="photo-grid__card">
+        <img class="photo-grid__image" src="" alt="Фото" />
+        <div class="photo-grid__card-info">
+          <h2 class="photo-grid__card-name"></h2>
+          <button type="button" class="button-like"></button>
+          <button type="button" class="button-delete-card"></button>
+        </div>
+      </li>
+    </template>
     <script src="script.js"></script>
   </body>
 </html>
