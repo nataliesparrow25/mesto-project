@@ -4,7 +4,6 @@ const inputName = document.querySelector("#name");
 const popUpEditCard = document.querySelector("#section-popup-edit-profile");
 const userDescription = document.querySelector(".profile__user-description");
 const inputDescription = document.querySelector("#description");
-// const titleCard = document.querySelector(".photo-grid__card-name");
 const titleCardInput = document.querySelector("#card-title");
 const imageCardInput = document.querySelector("#card-url");
 const addButton = document.querySelector(".profile__add-button");
@@ -23,7 +22,6 @@ const buttonClosePopUpAddCard = document.querySelector(
 const buttonClosePopUpPic = document.querySelector("#close_pop-up_pic");
 
 
-// Общие функции для открытия и закрытия поп-апа
 function openPopUp(idElement) {
   document.querySelector("#" + idElement).classList.add("popup_opened");
 }
@@ -36,7 +34,7 @@ buttonClosePopUpEditCard.addEventListener("click", (evt) => {
   closePopUp("section-popup-edit-profile");
 });
 
-// edit profile button
+
 editButton.addEventListener("click", () => {
   openPopUp("section-popup-edit-profile");
   inputName.value = userName.textContent;
@@ -52,7 +50,7 @@ document
     closePopUp("section-popup-edit-profile");
   });
 
-// Добавить карточку
+
 function createCard(imgSrc, titleCardValue) {
   const newCard = cardElement.cloneNode(true);
   const imageCard = newCard.querySelector(".photo-grid__image");
@@ -61,21 +59,21 @@ function createCard(imgSrc, titleCardValue) {
   imageCard.alt = titleCardValue;
   newCard.querySelector(".photo-grid__card-name").textContent = titleCardValue;
 
-  // Likes
+
   newCard
     .querySelector(".button-like")
     .addEventListener("click", function (evt) {
       evt.target.classList.toggle("button-like_active");
     });
 
-  // Delete card
+
   newCard
     .querySelector(".button-delete-card")
     .addEventListener("click", function (evt) {
       newCard.remove();
     });
 
-  //Popup pic
+
 
   newCard
     .querySelector(".photo-grid__image")
