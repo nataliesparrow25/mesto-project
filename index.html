@@ -51,15 +51,16 @@
     <footer class="footer" aria-label="Футер">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <section id="section-popup" class="popup">
+    <section id="section-popup-edit-profile" class="popup">
       <!-- <section class="popup popup_opened"> -->
       <div class="popup__container">
         <button
           type="button"
           class="button popup__button-close"
+          id="close_pop-up_edit-profile"
           aria-label="Закрыть"
         ></button>
-        <form class="popup__admin" id="popup__admin_edit-profile">
+        <form class="popup__form" id="popup__form_edit-profile">
           <h2 class="popup__heading">Редактировать профиль</h2>
           <div class="popup__input-container">
             <input
@@ -92,7 +93,7 @@
           id="close_pop-up_add-card"
           aria-label="Закрыть"
         ></button>
-        <form class="popup__admin" id="popup__admin_add-card">
+        <form class="popup__form" id="popup__form_add-card">
           <h2 class="popup__heading">Новое место</h2>
           <div class="popup__input-container">
             <input
@@ -116,9 +117,9 @@
         </form>
       </div>
     </section>
-    <section id="section-popup-pic" class="popup-pic">
+    <section id="section-popup-pic" class="popup">
       <!-- <section class="popup popup_opened"> -->
-      <div class="popup-pic__container">
+      <div class="popup__pic-container">
         <button
           type="button"
           class="button popup__button-close"
@@ -131,12 +132,12 @@
           alt="Фото"
           id="popup-pic-img"
         />
-        <h2 class="popup-pic__text" id="popup-pic-caption"></h2>
+        <h2 class="popup__pic-text" id="popup-pic-caption"></h2>
       </div>
     </section>
     <template id="grid-card-template">
       <li class="photo-grid__card">
-        <img class="photo-grid__image" src="" alt="Фото" />
+        <img class="photo-grid__image" src="" alt="" />
         <div class="photo-grid__card-info">
           <h2 class="photo-grid__card-name"></h2>
           <button type="button" class="button-like"></button>
@@ -144,6 +145,7 @@
         </div>
       </li>
     </template>
+    <script src="cards.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

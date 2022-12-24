@@ -1,4 +1,4 @@
-.popup-pic {
+/* .popup-pic {
   display: flex;
   position: fixed;
   align-items: center;
@@ -11,4 +11,4 @@
   justify-content: center;
   opacity: 0;
   transition: 1s opacity, 1s visibility;
-}
+} */
