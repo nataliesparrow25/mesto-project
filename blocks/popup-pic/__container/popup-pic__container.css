@@ -3,5 +3,7 @@
   flex-direction: column;
   position: relative;
   max-width: 75vw;
-
+ justify-content: center;
 }
+
+ 

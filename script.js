@@ -1,39 +1,23 @@
-let editButton = document.querySelector(".profile__edit-button");
-let userName = document.querySelector("h1");
-let inputName = document.getElementById("name");
-let popUp = document.getElementById("section-popup");
-let buttonClosePopUp = document.querySelector(".popup__button-close");
-let userDescription = document.querySelector(".profile__user-description");
-let inputDescription = document.getElementById("description");
+const editButton = document.querySelector(".profile__edit-button");
+const userName = document.querySelector("h1");
+const inputName = document.querySelector("#name");
+const popUpEditCard = document.querySelector("#section-popup-edit-profile");
+const userDescription = document.querySelector(".profile__user-description");
+const inputDescription = document.querySelector("#description");
+const titleCard = document.querySelector(".photo-grid__card-name");
+const imageCard = document.querySelector(".photo-grid__image");
+const titleCardInput = document.querySelector("#card-title");
+const imageCardInput = document.querySelector("#card-url");
+const addButton = document.querySelector(".profile__add-button");
+const popUpAddCard = document.querySelector("#section-popup-add-card");
+const cardsContainer = document.querySelector(".photo-grid__cards");
+const cardTemplate = document.querySelector("#grid-card-template").content;
+  const popUpPicImg = document.querySelector("#popup-pic-img");
+  const popUpPicCaption = document.querySelector("#popup-pic-caption");
 
-function closePopUp() {
-  popUp.classList.remove("popup_opened");
-}
-
-editButton.addEventListener("click", () => {
-  popUp.classList.add("popup_opened");
-  inputName.value = userName.textContent;
-  inputDescription.value = userDescription.textContent;
-});
-
-document
-  .querySelector("#popup__admin_edit-profile")
-  .addEventListener("submit", (evt) => {
-    evt.preventDefault();
-    userName.textContent = inputName.value;
-    userDescription.textContent = inputDescription.value;
-    closePopUp();
-  });
-
-buttonClosePopUp.addEventListener("click", closePopUp);
-
-let titleCard = document.querySelector(".photo-grid__card-name");
-let imageCard = document.getElementById(".photo-grid__image");
-let titleCardInput = document.querySelector("#card-title");
-let imageCardInput = document.querySelector("#card-url");
-let addButton = document.querySelector(".profile__add-button");
-let popUpAddCard = document.querySelector("#section-popup-add-card");
-let buttonClosePopUpAddCard = document.querySelector("#close_pop-up_add-card");
+const buttonClosePopUpEditCard = document.querySelector("#close_pop-up_edit-profile");
+const buttonClosePopUpAddCard = document.querySelector("#close_pop-up_add-card");
+const buttonClosePopUpPic = document.querySelector("#close_pop-up_pic");
 
 const initialCards = [
   {
@@ -62,9 +46,51 @@ const initialCards = [
   },
 ];
 
+
+// Общие функции для открытия и закрытия поп-апа
+function openPopUp(idElement) {
+  document.querySelector("#" + idElement).classList.add("popup_opened");
+}
+
+
+function closePopUp(idElement) {
+  document.querySelector('#'+idElement).classList.remove("popup_opened");
+}
+
+// const clickExit = (evt) => {
+//   closePopUp(evt.target.closest(".popup"));
+// };
+
+// const exit = Array.from(document.querySelectorAll(".popup__button-close")).forEach(
+//   (element) => {
+//     element.addEventListener("click", clickExit);
+//   }
+// );
+
+// edit profile button
+editButton.addEventListener("click", () => {
+  openPopUp("section-popup-edit-profile");
+  inputName.value = userName.textContent;
+  inputDescription.value = userDescription.textContent;
+});
+
+document
+  .querySelector("#popup__form_edit-profile")
+  .addEventListener("submit", (evt) => {
+    evt.preventDefault();
+    userName.textContent = inputName.value;
+    userDescription.textContent = inputDescription.value;
+    closePopUp("section-popup-edit-profile");
+  });
+
+buttonClosePopUpEditCard.addEventListener("click", (evt) => {
+  closePopUp("section-popup-edit-profile");
+});
+
+
+
+// Добавить карточку
 function addCard(imgSrc, titleCardValue) {
-  let cardsContainer = document.querySelector(".photo-grid__cards");
-  const cardTemplate = document.querySelector("#grid-card-template").content;
   const cardElement = cardTemplate
     .querySelector(".photo-grid__card")
     .cloneNode(true);
@@ -86,30 +112,18 @@ function addCard(imgSrc, titleCardValue) {
       cardElement.remove();
     });
 
-  // Pop Up pic
-  let popUpPic = document.getElementById("section-popup-pic");
-  let buttonClosePopUpPic = document.querySelector("#close_pop-up_pic");
-
-  function closePopUpPic() {
-    popUpPic.classList.remove("popup-pic_opened");
-  }
-
-  let popUpPicImg = document.querySelector("#popup-pic-img");
-  let popUpPicCaption = document.querySelector("#popup-pic-caption");
-
-  buttonClosePopUpPic.addEventListener("click", closePopUpPic);
+   buttonClosePopUpPic.addEventListener(
+    "click", (evt) => {
+      closePopUp("section-popup-pic");
+    });
 
   cardElement
     .querySelector(".photo-grid__image")
     .addEventListener("click", function (evt) {
-      console.log("Pop up opened");
-      popUpPic.classList.add("popup-pic_opened");
-      console.log(popUpPic);
+      openPopUp("section-popup-pic");
 
-      popUpPicImg.src = cardElement.querySelector(".photo-grid__image").src;
-      popUpPicCaption.textContent = cardElement.querySelector(
-        ".photo-grid__card-name"
-      ).textContent;
+      popUpPicImg.src = imgSrc.src;
+      popUpPicCaption.textContent = titleCardValue;
     });
 
   cardsContainer.prepend(cardElement);
@@ -119,20 +133,26 @@ initialCards.forEach(function (element) {
   addCard(element.link, element.name);
 });
 
-addButton.addEventListener("click", () => {
-  popUpAddCard.classList.add("popup_opened");
+addButton.addEventListener("click", (evt) => {
+  // popUpAddCard.classList.add("popup_opened");
+  openPopUp("section-popup-add-card");
 });
 
-function closePopUpAddCard() {
-  popUpAddCard.classList.remove("popup_opened");
-}
+// function closePopUpAddCard() {
+//   // popUpAddCard.classList.remove("popup_opened");
+//   closePopUp();
+// }
 
-buttonClosePopUpAddCard.addEventListener("click", closePopUpAddCard);
+buttonClosePopUpAddCard.addEventListener(
+  "click", (evt) => {
+  closePopUp("section-popup-add-card");
+  });
+// console.log("pop up pic closed");
 
 document
-  .querySelector("#popup__admin_add-card")
+  .querySelector("#popup__form_add-card")
   .addEventListener("submit", (evt) => {
     evt.preventDefault();
-    closePopUpAddCard();
+    closePopUp("section-popup-add-card");
     addCard(imageCardInput.value, titleCardInput.value);
   });
