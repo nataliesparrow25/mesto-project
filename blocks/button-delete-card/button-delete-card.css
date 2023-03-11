@@ -2,7 +2,7 @@
   display: block;
   cursor: pointer;
   background: transparent;
-  background-image: url(../../images/Bin.svg);
+  background-image: url(/src/images/Bin.svg);
   background-repeat: no-repeat;
   background-position: right;
   border: none;

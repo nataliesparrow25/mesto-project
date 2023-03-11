@@ -1,5 +1,3 @@
 .button-delete-card__active {
-  background-image: url(../../../images/Grey_bin.svg);
+  background-image: url(/src/images/Grey_bin.svg);
 }
-
-

@@ -1,6 +1,6 @@
 .profile__edit-button {
   border: 1px solid #ffffff;
-  background-image: url("../../../images/Edit_button.svg");
+  background-image: url("/src/images/Edit_button.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 10px;

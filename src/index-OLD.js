@@ -1,3 +1,50 @@
+import './index.css'; 
+// теперь картинки можно импортировать,
+// вебпак добавит в переменные правильные пути
+// теперь картинки можно импортировать,
+// вебпак добавит в переменные правильные пути
+const binImage = new URL('./images/Bin.svg', import.meta.url);
+const blackHeartImage = new URL('./images/Close_Icon.svg', import.meta.url);
+const closeIconImage = new URL('./images/Edit_button.svg', import.meta.url);
+const greyBinImage = new URL('./images/Grey_bin.svg', import.meta.url);
+const heartImage = new URL('./images/Heart.svg', import.meta.url);
+const mountainsImage = new URL('./images/mountains.png', import.meta.url);
+const oldTempleImage = new URL('./images/oldtemple.jpg', import.meta.url);
+const sunsetImage = new URL('./images/sunset.png', import.meta.url);
+const jacquesYvesCousteauImage = new URL('./images/Jacques_Yves_Cousteau.jpg', import.meta.url);
+const plusImage = new URL('./images/Plus.svg', import.meta.url);
+const vectorImage = new URL('./images/Vector.svg', import.meta.url);
+
+const interBlackWoffFont = new URL('./vendor/fonts/Inter-Black.woff', import.meta.url);
+const interBlackWoffTwoFont = new URL('./vendor/fonts/Inter-Black.woff2', import.meta.url);
+const InterMediumWoffFont = new URL('./vendor/fonts/Inter-Medium.woff', import.meta.url);
+const InterMediumWoffTwoFont = new URL('./vendor/fonts/Inter-Medium.woff2', import.meta.url);
+const InterRegularWoffFont = new URL('./vendor/fonts/Inter-Regular.woff', import.meta.url);
+const InterRegularWoffTwoFont = new URL('./vendor/fonts/Inter-Regular.woff2', import.meta.url);
+
+
+const whoIsTheGoat = [
+  // меняем исходные пути на переменные
+  { name: 'Bin', image: binImage },
+  { name: 'Black Heart', image: blackHeartImage },
+  { name: 'Close Icon', image: closeIconImage },
+  { name: 'Grey Bin', image: greyBinImage },
+  { name: 'Heart', image: heartImage },
+  { name: 'Mountains', image: mountainsImage },
+  { name: 'Old Temple', image: oldTempleImage },
+  { name: 'Sunset', image: sunsetImage },
+  { name: 'Jacques-Yves Cousteau', image: jacquesYvesCousteauImage },
+  { name: 'Plus', image: plusImage },
+  { name: 'Vector', image: vectorImage },
+
+  { name: 'Inter Black Woff', font: interBlackWoffFont },
+  { name: 'Inter Black Woff2', font: interBlackWoffTwoFont },
+  { name: 'Inter Medium Woff', font: InterMediumWoffFont },
+  { name: 'Inter Medium Woff2', font: InterMediumWoffTwoFont },
+  { name: 'Inter Regular Woff', font: InterRegularWoffFont },
+  { name: 'Inter Regular Woff2', font: InterRegularWoffTwoFont },
+];
+
 const editButton = document.querySelector(".profile__edit-button");
 const userName = document.querySelector(".profile__user-name");
 const inputName = document.querySelector("#name");
@@ -7,15 +54,12 @@ const titleCardInput = document.querySelector("#card-title");
 const imageCardInput = document.querySelector("#card-url");
 
 const addButton = document.querySelector(".profile__add-button");
-const cardsContainer = document.querySelector(".photo-grid__cards");
 const cardTemplate = document.querySelector("#grid-card-template").content;
-const cardElement = cardTemplate.querySelector(".photo-grid__card");
 
 const popUpPicCaption = document.querySelector("#popup-pic-caption");
 const popUpPicImg = document.querySelector("#popup-pic-img");
 
 const popUpEditCard = document.querySelector("#section-popup-edit-profile");
-const popUpAddCard = document.querySelector("#section-popup-add-card");
 const popUpPicCard = document.querySelector("#section-popup-pic");
 const buttonCloseList = document.querySelectorAll(".popup__button-close");
 const popUpForm = document.querySelector("#popup__form_add-card");

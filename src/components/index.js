@@ -1,15 +1,13 @@
-import "/src/index.css";
-import { enableValidation } from "/src/components/validate";
-import { enableCards } from "/src/components/card";
+import { enableValidation } from "./validate";
 
 enableValidation({
-  formSelector: ".popup__form",
-  inputSelector: ".popup__item",
-  submitButtonSelector: ".popup__button",
-  inactiveButtonClass: "popup__button_inactive",
-  inputErrorClass: "popup__item_type_error",
-  errorClass: "name-error_active",
-  popupSelector: ".popup",
+  formSelector: '.popup__form',
+  inputSelector: '.popup__item',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_inactive',
+  inputErrorClass: 'popup__item_type_error',
+  errorClass: 'name-error_active',
+  popupSelector: '.popup',
 });
 
 enableCards({

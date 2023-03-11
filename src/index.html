@@ -4,14 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <title>Mesto project</title>
   </head>
   <body class="root">
     <header class="header">
       <img
         class="header__logo"
-        src="./images/Vector.svg"
+        src="<%=require('./images/Vector.svg')%>"
         alt="Логотип проекта Mesto Russia. Одноименная надпись"
       />
     </header>
@@ -20,7 +19,7 @@
         <div class="profile__main-container">
           <img
             class="profile__avatar"
-            src="./images/image.jpg"
+            src="<%=require('./images/Jacques_Yves_Cousteau.jpg')%>"
             alt="Жак-Ив Кусто"
           />
           <div class="profile__info">
@@ -72,7 +71,7 @@
               pattern="^[a-zA-ZА-Яа-яЁё\s\-]+$"
               minlength="2"
               maxlength="40"
-              data-error-message="Разрешены только буквы"
+              data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
             />
             <span class="name-error" id="name-error"></span>
             <input
@@ -85,7 +84,7 @@
               pattern="^[a-zA-ZА-Яа-яЁё\s\-]+$"
               minlength="2"
               maxlength="200"
-              data-error-message="Разрешены только буквы"
+              data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
             />
             <span class="name-error" id="description-error"></span>
           </div>
@@ -115,7 +114,7 @@
               minlength="2"
               maxlength="30"
               pattern="^[a-zA-ZА-Яа-яЁё\s\-]+$"
-              data-error-message="Разрешены только буквы"
+              data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
               required
             />
             <span class="name-error" id="card-title-error"></span>
@@ -157,7 +156,12 @@
         </div>
       </li>
     </template>
-    <script src="cards.js"></script>
-    <script src="script.js"></script>
+    <!-- <script src="cards.js"></script> -->
+    <!-- <script src="index.js"></script> -->
+    <!-- <script type="module" src="./src/components/validate.js"></script>
+    <script type="module" src="./src/components/card.js"></script>
+    <script type="module" src="./src/components/modal.js"></script>
+    <script type="module" src="./src/components/utils.js"></script>
+    <script type="module" src="./src/components/index.js"></script> -->
   </body>
 </html>
