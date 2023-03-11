@@ -1,3 +1,12 @@
+export function closePopUp(popup) {
+  if (popup.code === 'Escape') {
+  popup.classList.remove("popup_opened");
+  }
+
+  popup.classList.remove("popup_opened");
+}
+
+
 export function openPopUp(popup) {
   popup.classList.add("popup_opened");
   window.addEventListener('keydown', closePopUp)

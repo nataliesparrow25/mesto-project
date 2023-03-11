@@ -1,3 +1,5 @@
+import { closePopUp } from "./modal";
+
 const showInputError = (formElement, inputElement, errorMessage, parameters) => {
   // Находим элемент ошибки внутри самой функции
   const popupError = formElement.querySelector(`#${inputElement.id}-error`);

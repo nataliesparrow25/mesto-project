@@ -1,4 +1,4 @@
-import { openPopUp } from "./modal";
+import { openPopUp, closePopUp } from "./modal";
 
 const initialCards = [
   {
