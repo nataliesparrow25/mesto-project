@@ -1,0 +1,17 @@
+{
+  "name": "mesto-project",
+  "version": "1.0.0",
+  "description": "Автор:\r Наталья Воробьева,\r Курс \"Веб плюс\", 20 когорта.\r Описание проекта: \"Место\".\r Использованы технологии html, css.",
+  "main": "cards.js",
+  "scripts": {
+    "build": "rd /s /q dist && webpack",
+    "dev": "webpack serve"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.76.1",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
+  }
+}
