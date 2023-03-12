@@ -45,11 +45,6 @@ const whoIsTheGoat = [
   { name: 'Inter Regular Woff2', font: InterRegularWoffTwoFont },
 ];
 
-const editButton = document.querySelector(".profile__edit-button");
-const userName = document.querySelector(".profile__user-name");
-const inputName = document.querySelector("#name");
-const userDescription = document.querySelector(".profile__user-description");
-const inputDescription = document.querySelector("#description");
 const titleCardInput = document.querySelector("#card-title");
 const imageCardInput = document.querySelector("#card-url");
 
@@ -59,7 +54,6 @@ const cardTemplate = document.querySelector("#grid-card-template").content;
 const popUpPicCaption = document.querySelector("#popup-pic-caption");
 const popUpPicImg = document.querySelector("#popup-pic-img");
 
-const popUpEditCard = document.querySelector("#section-popup-edit-profile");
 const popUpPicCard = document.querySelector("#section-popup-pic");
 const buttonCloseList = document.querySelectorAll(".popup__button-close");
 const popUpForm = document.querySelector("#popup__form_add-card");
@@ -82,10 +76,6 @@ function openPopUp(popup) {
 
 
 function closePopUp(popup) {
-  if (popup.code === 'Escape') {
-  popup.classList.remove("popup_opened");
-  }
-
   popup.classList.remove("popup_opened");
 }
 

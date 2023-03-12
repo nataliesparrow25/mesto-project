@@ -1,16 +1,21 @@
-import { closePopUp } from "./modal";
+import { closePopUp } from "/src/components/utils";
+let parameters = {};
 
-const showInputError = (formElement, inputElement, errorMessage, parameters) => {
+const showInputError = (
+  formElement,
+  inputElement,
+  errorMessage
+
+) => {
   // Находим элемент ошибки внутри самой функции
   const popupError = formElement.querySelector(`#${inputElement.id}-error`);
   // Остальной код такой же
   inputElement.classList.add(parameters.inputErrorClass);
   popupError.textContent = errorMessage;
   popupError.classList.add(parameters.errorClass);
-
 };
 
-const hideInputError = (formElement, inputElement, parameters) => {
+const hideInputError = (formElement, inputElement) => {
   // Находим элемент ошибки
   const popupError = formElement.querySelector(`#${inputElement.id}-error`);
   // Остальной код такой же
@@ -19,7 +24,7 @@ const hideInputError = (formElement, inputElement, parameters) => {
   popupError.textContent = "";
 };
 
-const isValid = (formElement, inputElement, parameters) => {
+const isValid = (formElement, inputElement) => {
   if (inputElement.validity.patternMismatch) {
     // данные атрибута доступны у элемента инпута через ключевое слово dataset.
     // обратите внимание, что в js имя атрибута пишется в camelCase (да-да, в
@@ -30,9 +35,13 @@ const isValid = (formElement, inputElement, parameters) => {
   }
 
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage, parameters);
+    showInputError(
+      formElement,
+      inputElement,
+      inputElement.validationMessage
+    );
   } else {
-    hideInputError(formElement, inputElement, parameters);
+    hideInputError(formElement, inputElement);
   }
 };
 
@@ -52,7 +61,11 @@ const hasInvalidInput = (inputList) => {
 // Функция принимает массив полей ввода
 // и элемент кнопки, состояние которой нужно менять
 
-const toggleButtonState = (inputList, buttonElement, parameters) => {
+const toggleButtonState = (formElement, inputList) => {
+  const buttonElement = formElement.querySelector(
+    parameters.submitButtonSelector
+  );
+
   // Если есть хотя бы один невалидный инпут
   if (hasInvalidInput(inputList)) {
     // сделай кнопку неактивной
@@ -65,38 +78,40 @@ const toggleButtonState = (inputList, buttonElement, parameters) => {
   }
 };
 
-const setEventListeners = (formElement, parameters) => {
+const setEventListeners = (formElement) => {
   // Находим все поля внутри формы,
   // сделаем из них массив методом Array.from
-  const inputList = Array.from(formElement.querySelectorAll(parameters.inputSelector));
-  const buttonElement = formElement.querySelector(parameters.sumbitButtonSelector);
+  const inputList = Array.from(
+    formElement.querySelectorAll(parameters.inputSelector)
+  );
   // Обойдём все элементы полученной коллекции
   inputList.forEach((inputElement) => {
     // каждому полю добавим обработчик события input
     inputElement.addEventListener("input", () => {
       // Внутри колбэка вызовем isValid,
       // передав ей форму и проверяемый элемент
-      isValid(formElement, inputElement, parameters);
+      isValid(formElement, inputElement);
       // Вызовем toggleButtonState и передадим ей массив полей и кнопку
-      toggleButtonState(inputList, buttonElement, parameters);
+      toggleButtonState(formElement, inputList);
     });
   });
 };
 
-
-
-
-export const enableValidation = (parameters) => {
+export const enableValidation = (params) => {
+  parameters = params;
+  
   // Найдём все формы с указанным классом в DOM,
   // сделаем из них массив методом Array.from
   // const formList = Array.from(document.querySelectorAll(".popup__form"));
-  const formList = Array.from(document.querySelectorAll(parameters.formSelector));
+  const formList = Array.from(
+    document.querySelectorAll(parameters.formSelector)
+  );
 
   // Переберём полученную коллекцию
   formList.forEach((formElement) => {
     // Для каждой формы вызовем функцию setEventListeners,
     // передав ей элемент формы
-    setEventListeners(formElement, parameters);
+    setEventListeners(formElement);
   });
 
   const popUps = document.querySelectorAll(parameters.popupSelector);

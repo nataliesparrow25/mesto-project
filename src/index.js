@@ -1,6 +1,24 @@
 import "/src/index.css";
 import { enableValidation } from "/src/components/validate";
 import { enableCards } from "/src/components/card";
+import { enableModals } from "/src/components/modal";
+import { enableUtils } from "/src/components/utils";
+
+enableUtils({
+  popupOpenedClass: "popup_opened",
+});
+
+enableModals({
+  editButtonSelector: ".profile__edit-button",
+  popUpEditCardSelector: ".profile__edit-button",
+  userNameSelector: "#section-popup-edit-profile",
+  inputNameSelector: ".profile__user-name",
+  inputDescriptionSelector: "#description",
+  userDescriptionSelector: ".profile__user-description",
+  formEditProfileSelector: "#popup__form_edit-profile",
+
+  nameSelector: "#name",
+});
 
 enableValidation({
   formSelector: ".popup__form",
@@ -29,5 +47,5 @@ enableCards({
   titleCardInputSelector: "#card-title",
   imageCardInputSelector: "#card-url",
   popUpFormSelector: "#popup__form_add-card",
-  profileAddButtonSelector: '.profile__add-button',
+  profileAddButtonSelector: ".profile__add-button",
 });
