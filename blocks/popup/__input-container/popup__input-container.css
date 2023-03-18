@@ -1,8 +1,8 @@
 .popup__input-container {
   display: flex;
   flex-direction: column;
-  row-gap: 30px;
-  padding-bottom: 48px;
+  /* row-gap: 30px; */
+  padding-bottom: 31x;
 }
 
 @media screen and (max-width: 879px) {

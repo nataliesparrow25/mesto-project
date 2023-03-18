@@ -1,0 +1,18 @@
+.name-error_active {
+    color: #FF0000;
+  box-sizing: border-box;
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 15px;
+min-height: 30px;
+}
+
+@media screen and (max-width: 879px) {
+  .name-error_active {
+    width: 238px;
+    font-size: 12px;
+    line-height: 17px;
+    align-self: center;
+  }
+}

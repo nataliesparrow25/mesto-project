@@ -2,7 +2,7 @@
   display: block;
   cursor: pointer;
   background: transparent;
-  background-image: url(../../images/Heart.svg);
+  background-image: url(/src/images/Heart.svg);
   background-repeat: no-repeat;
   background-position: center;
   border: none;
