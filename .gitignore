@@ -1,5 +1,3 @@
 node_modules
 dist
 
-# for npm dev run
-src/index-OLD.js
