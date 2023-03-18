@@ -1,12 +1,6 @@
-import { closePopUp } from "/src/components/utils";
 let parameters = {};
 
-const showInputError = (
-  formElement,
-  inputElement,
-  errorMessage
-
-) => {
+const showInputError = (formElement, inputElement, errorMessage) => {
   // Находим элемент ошибки внутри самой функции
   const popupError = formElement.querySelector(`#${inputElement.id}-error`);
   // Остальной код такой же
@@ -35,11 +29,7 @@ const isValid = (formElement, inputElement) => {
   }
 
   if (!inputElement.validity.valid) {
-    showInputError(
-      formElement,
-      inputElement,
-      inputElement.validationMessage
-    );
+    showInputError(formElement, inputElement, inputElement.validationMessage);
   } else {
     hideInputError(formElement, inputElement);
   }
@@ -99,7 +89,7 @@ const setEventListeners = (formElement) => {
 
 export const enableValidation = (params) => {
   parameters = params;
-  
+
   // Найдём все формы с указанным классом в DOM,
   // сделаем из них массив методом Array.from
   // const formList = Array.from(document.querySelectorAll(".popup__form"));
@@ -112,14 +102,5 @@ export const enableValidation = (params) => {
     // Для каждой формы вызовем функцию setEventListeners,
     // передав ей элемент формы
     setEventListeners(formElement);
-  });
-
-  const popUps = document.querySelectorAll(parameters.popupSelector);
-  popUps.forEach((popUpElement) => {
-    popUpElement.addEventListener("click", (evt) => {
-      if (evt.currentTarget === evt.target) {
-        closePopUp(popUpElement);
-      }
-    });
   });
 };

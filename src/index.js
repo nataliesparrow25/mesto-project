@@ -28,7 +28,6 @@ enableValidation({
   inactiveButtonClass: "popup__button_inactive",
   inputErrorClass: "popup__item_type_error",
   errorClass: "name-error_active",
-  popupSelector: ".popup",
 });
 
 enableCards({

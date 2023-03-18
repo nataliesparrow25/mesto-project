@@ -33,9 +33,9 @@ function addListenerEditProfile(
 
 function addEventListenerButtonClose(buttonCloseList) {
   buttonCloseList.forEach((btn) => {
-  const popup = btn.closest(parameters.popupSelector);
-  btn.addEventListener("click", () => closePopUp(popup));
-});
+    const popup = btn.closest(parameters.popupSelector);
+    btn.addEventListener("click", () => closePopUp(popup));
+  });
 }
 
 export const enableModals = (params) => {
@@ -44,7 +44,9 @@ export const enableModals = (params) => {
   const popUpEditCard = document.querySelector(parameters.userNameSelector);
   const userName = document.querySelector(parameters.inputNameSelector);
   const inputName = document.querySelector(parameters.nameSelector);
-  const buttonCloseList = document.querySelectorAll(parameters.buttonCloseListSelector);
+  const buttonCloseList = document.querySelectorAll(
+    parameters.buttonCloseListSelector
+  );
 
   const inputDescription = document.querySelector(
     parameters.inputDescriptionSelector
@@ -69,4 +71,13 @@ export const enableModals = (params) => {
     userDescription,
     inputDescription
   );
+
+  const popUps = document.querySelectorAll(parameters.popupSelector);
+  popUps.forEach((popUpElement) => {
+    popUpElement.addEventListener("click", (evt) => {
+      if (evt.currentTarget === evt.target) {
+        closePopUp(popUpElement);
+      }
+    });
+  });
 };
