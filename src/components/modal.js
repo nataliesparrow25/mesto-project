@@ -1,5 +1,5 @@
 let parameters = {};
-import { openPopUp } from "/src/components/utils";
+import { openPopUp, closePopUp } from "/src/components/utils";
 
 function addListenerButton(
   button,
@@ -31,18 +31,29 @@ function addListenerEditProfile(
     });
 }
 
+function addEventListenerButtonClose(buttonCloseList) {
+  buttonCloseList.forEach((btn) => {
+  const popup = btn.closest(parameters.popupSelector);
+  btn.addEventListener("click", () => closePopUp(popup));
+});
+}
+
 export const enableModals = (params) => {
   parameters = params;
   const editButton = document.querySelector(parameters.editButtonSelector);
   const popUpEditCard = document.querySelector(parameters.userNameSelector);
   const userName = document.querySelector(parameters.inputNameSelector);
   const inputName = document.querySelector(parameters.nameSelector);
+  const buttonCloseList = document.querySelectorAll(parameters.buttonCloseListSelector);
+
   const inputDescription = document.querySelector(
     parameters.inputDescriptionSelector
   );
   const userDescription = document.querySelector(
     parameters.userDescriptionSelector
   );
+
+  addEventListenerButtonClose(buttonCloseList);
 
   addListenerButton(
     editButton,
