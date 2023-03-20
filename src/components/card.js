@@ -107,5 +107,7 @@ export const enableCards = (params) => {
     );
     closePopUp(popUpAddCard);
     popUpForm.reset();
+    buttonAddCard.disabled = true;
+    buttonAddCard.classList.add(parameters.inactiveButtonClass);
   });
 };

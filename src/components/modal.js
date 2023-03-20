@@ -20,7 +20,8 @@ function addListenerEditProfile(
   userName,
   inputName,
   userDescription,
-  inputDescription
+  inputDescription,
+  popUpEditCard,
 ) {
   document
     .querySelector(parameters.formEditProfileSelector)
@@ -28,6 +29,7 @@ function addListenerEditProfile(
       evt.preventDefault();
       userName.textContent = inputName.value;
       userDescription.textContent = inputDescription.value;
+      closePopUp(popUpEditCard);
     });
 }
 
@@ -69,7 +71,8 @@ export const enableModals = (params) => {
     userName,
     inputName,
     userDescription,
-    inputDescription
+    inputDescription,
+    popUpEditCard,
   );
 
   const popUps = document.querySelectorAll(parameters.popupSelector);
