@@ -58,7 +58,7 @@
           id="close_pop-up_edit-profile"
           aria-label="Закрыть"
         ></button>
-        <form class="popup__form" id="popup__form_edit-profile" novalidate>
+        <form class="popup__form" id="popup__form_edit-profile" name="editProfileForm" novalidate>
           <h2 class="popup__heading">Редактировать профиль</h2>
           <div class="popup__input-container">
             <input
@@ -128,7 +128,7 @@
             />
             <span class="name-error" id="card-url-error"></span>
           </div>
-          <button type="submit" class="popup__button" id="button-add-card" disabled>
+          <button type="submit" class="popup__button popup__button_inactive" id="button-add-card" disabled>
             Создать
           </button>
         </form>

@@ -47,4 +47,6 @@ enableCards({
   imageCardInputSelector: "#card-url",
   popUpFormSelector: "#popup__form_add-card",
   profileAddButtonSelector: ".profile__add-button",
+  buttonAddCardSelector: "#button-add-card",
+  inactiveButtonClass: "popup__button_inactive",
 });

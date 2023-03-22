@@ -1,6 +1,5 @@
 import { openPopUp, closePopUp } from "/src/components/utils";
 
-
 const initialCards = [
   {
     name: "Архыз",
@@ -30,20 +29,14 @@ const initialCards = [
 
 let parameters = {};
 
-function createCard(imgSrc, titleCardValue) {
-  const popUpPicCaption = document.querySelector(
-    parameters.popUpPicCaptionSelector
-  );
-  const popUpPicCard = document.querySelector(
-    parameters.sectionPopUpPicSelector
-  );
-  const popUpPicImg = document.querySelector(parameters.popUpPicImgSelector);
-  const cardTemplate = document.querySelector(
-    parameters.gridCardTemplateSelector
-  ).content;
-  const cardElement = cardTemplate.querySelector(
-    parameters.cardElementSelector
-  );
+function createCard(
+  imgSrc,
+  titleCardValue,
+  popUpPicCaption,
+  popUpPicCard,
+  popUpPicImg,
+  cardElement
+) {
   const newCard = cardElement.cloneNode(true);
   const imageCard = newCard.querySelector(parameters.imageCardSelector);
 
@@ -64,25 +57,49 @@ function createCard(imgSrc, titleCardValue) {
       newCard.remove();
     });
 
-  newCard
-    .querySelector(parameters.imageCardSelector)
-    .addEventListener("click", function (evt) {
-      openPopUp(popUpPicCard);
-      popUpPicImg.src = imgSrc;
-      popUpPicImg.alt = titleCardValue;
-      popUpPicCaption.textContent = titleCardValue;
-    });
+  imageCard.addEventListener("click", function (evt) {
+    openPopUp(popUpPicCard);
+    popUpPicImg.src = imgSrc;
+    popUpPicImg.alt = titleCardValue;
+    popUpPicCaption.textContent = titleCardValue;
+  });
   return newCard;
 }
 
-function renderCard(newCard) {
-  document.querySelector(parameters.cardElementsSelector).prepend(newCard);
+function renderCard(newCard, cardElements) {
+  cardElements.prepend(newCard);
 }
 
 export const enableCards = (params) => {
   parameters = params;
+  const popUpPicCaption = document.querySelector(
+    parameters.popUpPicCaptionSelector
+  );
+  const popUpPicCard = document.querySelector(
+    parameters.sectionPopUpPicSelector
+  );
+  const popUpPicImg = document.querySelector(parameters.popUpPicImgSelector);
+  const cardTemplate = document.querySelector(
+    parameters.gridCardTemplateSelector
+  ).content;
+  const cardElement = cardTemplate.querySelector(
+    parameters.cardElementSelector
+  );
+
+  const cardElements = document.querySelector(parameters.cardElementsSelector);
+
   initialCards.forEach(function (element) {
-    renderCard(createCard(element.link, element.name));
+    renderCard(
+      createCard(
+        element.link,
+        element.name,
+        popUpPicCaption,
+        popUpPicCard,
+        popUpPicImg,
+        cardElement
+      ),
+      cardElements
+    );
   });
 
   const popUpAddCard = document.querySelector(parameters.popUpAddCardSelector);
@@ -93,6 +110,7 @@ export const enableCards = (params) => {
     parameters.imageCardInputSelector
   );
   const popUpForm = document.querySelector(parameters.popUpFormSelector);
+  const buttonAddCard = document.querySelector(parameters.buttonAddCardSelector); 
 
   document
     .querySelector(parameters.profileAddButtonSelector)
@@ -103,9 +121,19 @@ export const enableCards = (params) => {
   popUpForm.addEventListener("submit", (evt) => {
     evt.preventDefault();
     renderCard(
-      createCard(imageCardInput.value, titleCardInput.value)
+      createCard(
+        imageCardInput.value,
+        titleCardInput.value,
+        popUpPicCaption,
+        popUpPicCard,
+        popUpPicImg,
+        cardElement
+      ),
+      cardElements
     );
     closePopUp(popUpAddCard);
     popUpForm.reset();
+    buttonAddCard.disabled = true;
+    buttonAddCard.classList.add(parameters.inactiveButtonClass);
   });
 };

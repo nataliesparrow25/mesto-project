@@ -20,14 +20,15 @@ function addListenerEditProfile(
   userName,
   inputName,
   userDescription,
-  inputDescription
+  inputDescription,
+  popUpEditCard,
 ) {
   document
-    .querySelector(parameters.formEditProfileSelector)
-    .addEventListener("submit", (evt) => {
+    .forms.editProfileForm.addEventListener("submit", (evt) => {
       evt.preventDefault();
       userName.textContent = inputName.value;
       userDescription.textContent = inputDescription.value;
+      closePopUp(popUpEditCard);
     });
 }
 
@@ -69,12 +70,13 @@ export const enableModals = (params) => {
     userName,
     inputName,
     userDescription,
-    inputDescription
+    inputDescription,
+    popUpEditCard,
   );
 
   const popUps = document.querySelectorAll(parameters.popupSelector);
   popUps.forEach((popUpElement) => {
-    popUpElement.addEventListener("click", (evt) => {
+    popUpElement.addEventListener("mousedown", (evt) => {
       if (evt.currentTarget === evt.target) {
         closePopUp(popUpElement);
       }
