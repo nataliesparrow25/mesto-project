@@ -24,8 +24,7 @@ function addListenerEditProfile(
   popUpEditCard,
 ) {
   document
-    .querySelector(parameters.formEditProfileSelector)
-    .addEventListener("submit", (evt) => {
+    .forms.editProfileForm.addEventListener("submit", (evt) => {
       evt.preventDefault();
       userName.textContent = inputName.value;
       userDescription.textContent = inputDescription.value;
@@ -77,7 +76,7 @@ export const enableModals = (params) => {
 
   const popUps = document.querySelectorAll(parameters.popupSelector);
   popUps.forEach((popUpElement) => {
-    popUpElement.addEventListener("click", (evt) => {
+    popUpElement.addEventListener("mousedown", (evt) => {
       if (evt.currentTarget === evt.target) {
         closePopUp(popUpElement);
       }
