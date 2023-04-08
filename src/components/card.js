@@ -1,31 +1,9 @@
 import { openPopUp, closePopUp } from "/src/components/utils";
 
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
+
+
+
+
 
 let parameters = {};
 
@@ -88,7 +66,16 @@ export const enableCards = (params) => {
 
   const cardElements = document.querySelector(parameters.cardElementsSelector);
 
-  initialCards.forEach(function (element) {
+  fetch('https://nomoreparties.co/v1/plus-cohort-22/cards', {
+  headers: {
+    authorization: '4ea1ac11-b9d4-4569-861a-158722f0e68d'
+  }
+  })
+    .then((res) => {
+    return res.json(); 
+  })
+  .then((res) => {
+        res.forEach(function (element) {
     renderCard(
       createCard(
         element.link,
@@ -100,7 +87,20 @@ export const enableCards = (params) => {
       ),
       cardElements
     );
+    });
+
+  })
+  .catch((err) => {
+    console.log('Ошибка. Запрос не выполнен');
   });
+
+
+    
+  
+
+   
+  
+
 
   const popUpAddCard = document.querySelector(parameters.popUpAddCardSelector);
   const titleCardInput = document.querySelector(
