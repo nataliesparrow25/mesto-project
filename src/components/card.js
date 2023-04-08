@@ -1,9 +1,5 @@
 import { openPopUp, closePopUp } from "/src/components/utils";
-
-
-
-
-
+import { getData } from "./api";
 
 let parameters = {};
 
@@ -65,42 +61,21 @@ export const enableCards = (params) => {
   );
 
   const cardElements = document.querySelector(parameters.cardElementsSelector);
-
-  fetch('https://nomoreparties.co/v1/plus-cohort-22/cards', {
-  headers: {
-    authorization: '4ea1ac11-b9d4-4569-861a-158722f0e68d'
-  }
-  })
-    .then((res) => {
-    return res.json(); 
-  })
-  .then((res) => {
-        res.forEach(function (element) {
-    renderCard(
-      createCard(
-        element.link,
-        element.name,
-        popUpPicCaption,
-        popUpPicCard,
-        popUpPicImg,
-        cardElement
-      ),
-      cardElements
-    );
+  getData(parameters.urlCards).then((data) => {
+    data.forEach(function (element) {
+      renderCard(
+        createCard(
+          element.link,
+          element.name,
+          popUpPicCaption,
+          popUpPicCard,
+          popUpPicImg,
+          cardElement
+        ),
+        cardElements
+      );
     });
-
-  })
-  .catch((err) => {
-    console.log('Ошибка. Запрос не выполнен');
   });
-
-
-    
-  
-
-   
-  
-
 
   const popUpAddCard = document.querySelector(parameters.popUpAddCardSelector);
   const titleCardInput = document.querySelector(
@@ -110,7 +85,9 @@ export const enableCards = (params) => {
     parameters.imageCardInputSelector
   );
   const popUpForm = document.querySelector(parameters.popUpFormSelector);
-  const buttonAddCard = document.querySelector(parameters.buttonAddCardSelector); 
+  const buttonAddCard = document.querySelector(
+    parameters.buttonAddCardSelector
+  );
 
   document
     .querySelector(parameters.profileAddButtonSelector)
