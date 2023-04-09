@@ -1,8 +1,15 @@
 import "/src/index.css";
+import { enableApi } from "./components/api";
 import { enableValidation } from "/src/components/validate";
 import { enableCards } from "/src/components/card";
 import { enableModals } from "/src/components/modal";
 import { enableUtils } from "/src/components/utils";
+
+enableApi({
+  baseUrl: "https://nomoreparties.co/v1",
+  cohort: "plus-cohort-22",
+  authToken: "4ea1ac11-b9d4-4569-861a-158722f0e68d",
+});
 
 enableUtils({
   popupOpenedClass: "popup_opened",
@@ -11,7 +18,9 @@ enableUtils({
 enableModals({
   editButtonSelector: ".profile__edit-button",
   popUpEditCardSelector: ".profile__edit-button",
+  profileAvatarSelector: ".profile__avatar",
   userNameSelector: "#section-popup-edit-profile",
+  sectionUpdateAvatarPopupSelector: "#section-update-avatar-popup",
   inputNameSelector: ".profile__user-name",
   inputDescriptionSelector: "#description",
   userDescriptionSelector: ".profile__user-description",
@@ -19,6 +28,14 @@ enableModals({
   buttonCloseListSelector: ".popup__button-close",
   nameSelector: "#name",
   popupSelector: ".popup",
+  userUrl: "users/me",
+  userUpdateAvatarUrl: "users/me/avatar",
+  buttonEditAvatarSelector: ".profile__avatar-edit-button",
+  editAvatarButtonSelector: '#button-update-avatar',
+  inputAvatarUrlSelector: "#avatar-url",
+  inactiveButtonClass: "popup__button_inactive",
+  buttonSaveProfileSelector: '#button-save-name',
+
 });
 
 enableValidation({
@@ -49,4 +66,8 @@ enableCards({
   profileAddButtonSelector: ".profile__add-button",
   buttonAddCardSelector: "#button-add-card",
   inactiveButtonClass: "popup__button_inactive",
+  urlCards: "cards",
+  photoGridCardInfoSelector: ".photo-grid__card-info",
+  likeSelector: '.photo-grid__like-counter',
+  urlLike: 'cards/likes',
 });

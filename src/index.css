@@ -81,6 +81,10 @@
 
 @import url(../blocks/popup/__button/_inactive/popup__button_inactive.css);
 
+@import url(../blocks/button-delete-card/_disabled/button-delete-card_disabled.css);
+@import url(../blocks/profile/__avatar-edit-button/profile__avatar-edit-button.css);
+@import url(../blocks/photo-grid/__like-counter/photo-grid__like-counter.css);
+@import url(../blocks/photo-grid/__like-counter/_active/photo-grid__like-counter_active.css);
 
 
 
