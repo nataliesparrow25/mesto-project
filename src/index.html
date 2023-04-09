@@ -17,11 +17,8 @@
     <main class="page">
       <section class="profile">
         <div class="profile__main-container">
-          <img
-            class="profile__avatar"
-            src=""
-            alt="Аватарка"
-          />
+          <button type="button" class="profile__avatar-edit-button"></button>
+          <img class="profile__avatar" src="" alt="Аватарка" />
           <div class="profile__info">
             <div class="profile__container">
               <h1 class="profile__user-name"></h1>
@@ -58,7 +55,12 @@
           id="close_pop-up_edit-profile"
           aria-label="Закрыть"
         ></button>
-        <form class="popup__form" id="popup__form_edit-profile" name="editProfileForm" novalidate>
+        <form
+          class="popup__form"
+          id="popup__form_edit-profile"
+          name="editProfileForm"
+          novalidate
+        >
           <h2 class="popup__heading">Редактировать профиль</h2>
           <div class="popup__input-container">
             <input
@@ -128,8 +130,63 @@
             />
             <span class="name-error" id="card-url-error"></span>
           </div>
-          <button type="submit" class="popup__button popup__button_inactive" id="button-add-card" disabled>
+          <button
+            type="submit"
+            class="popup__button popup__button_inactive"
+            id="button-add-card"
+            disabled
+          >
             Создать
+          </button>
+        </form>
+      </div>
+    </section>
+    <!-- <section id="section-confirm-popup" class="popup">
+      <div class="popup__container">
+        <button
+          type="button"
+          class="button popup__button-close"
+          id="close_pop-up_confirm-card"
+          aria-label="Закрыть"
+        ></button>
+        <form class="popup__form" id="popup__form_confirm-card">
+          <h2 class="popup__heading">Вы уверены?</h2>
+          <button type="submit" class="popup__button" id="button-confirm-card">
+            Да
+          </button>
+        </form>
+      </div>
+    </section> -->
+    <section id="section-update-avatar-popup" class="popup">
+      <div class="popup__container">
+        <button
+          type="button"
+          class="button popup__button-close"
+          id="close_pop-up_update-avatar"
+          aria-label="Закрыть"
+        ></button>
+        <form
+          class="popup__form"
+          id="popup__form_update-avatar"
+          name="updateAvatarForm"
+        >
+          <h2 class="popup__heading">Обновить аватар</h2>
+          <input
+            type="url"
+            class="popup__item"
+            name="avatar-url"
+            id="avatar-url"
+            placeholder="Ссылка на картинку"
+            required
+          />
+          <span class="name-error" id="avatar-url-error"></span>
+          <button
+            type="submit"
+            class="popup__button popup__button_inactive"
+            id="button-update-avatar"
+            disabled
+          >
+            Сохранить
           </button>
         </form>
       </div>
@@ -151,7 +208,13 @@
         <img class="photo-grid__image" src="" alt="" />
         <div class="photo-grid__card-info">
           <h2 class="photo-grid__card-name"></h2>
-          <button type="button" class="button-like"></button>
+          <div>
+            <button type="button" class="button-like"></button>
+            <p
+              class="photo-grid__like-counter photo-grid__like-counter_active"
+            ></p>
+          </div>
+
           <button type="button" class="button-delete-card"></button>
         </div>
       </li>

@@ -18,7 +18,9 @@ enableUtils({
 enableModals({
   editButtonSelector: ".profile__edit-button",
   popUpEditCardSelector: ".profile__edit-button",
+  profileAvatarSelector: ".profile__avatar",
   userNameSelector: "#section-popup-edit-profile",
+  sectionUpdateAvatarPopupSelector: "#section-update-avatar-popup",
   inputNameSelector: ".profile__user-name",
   inputDescriptionSelector: "#description",
   userDescriptionSelector: ".profile__user-description",
@@ -26,8 +28,14 @@ enableModals({
   buttonCloseListSelector: ".popup__button-close",
   nameSelector: "#name",
   popupSelector: ".popup",
-  profileAvatarSelector: ".profile__avatar",
   userUrl: "users/me",
+  userUpdateAvatarUrl: "users/me/avatar",
+  buttonEditAvatarSelector: ".profile__avatar-edit-button",
+  editAvatarButtonSelector: '#button-update-avatar',
+  inputAvatarUrlSelector: "#avatar-url",
+  inactiveButtonClass: "popup__button_inactive",
+  buttonSaveProfileSelector: '#button-save-name',
+
 });
 
 enableValidation({
@@ -59,5 +67,7 @@ enableCards({
   buttonAddCardSelector: "#button-add-card",
   inactiveButtonClass: "popup__button_inactive",
   urlCards: "cards",
+  photoGridCardInfoSelector: ".photo-grid__card-info",
+  likeSelector: '.photo-grid__like-counter',
+  urlLike: 'cards/likes',
 });
-
