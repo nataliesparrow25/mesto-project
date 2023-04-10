@@ -9,9 +9,6 @@ export function getData(url) {
     },
   })
     .then(checkResponse)
-    .catch((res) => {
-      console.log(`Ошибка: ${res.status}`); // "Что-то пошло не так: ..."
-    });
 }
 
 export function putData(url) {
@@ -22,9 +19,6 @@ export function putData(url) {
     method: "PUT", // нужно указать метод запроса
   })
     .then(checkResponse)
-    .catch((res) => {
-      console.log(`Ошибка: ${res.status}`); // "Что-то пошло не так: ..."
-    });
 }
 
 export function updateData(url, data) {
@@ -38,9 +32,6 @@ export function updateData(url, data) {
     body: JSON.stringify(data),
   })
     .then(checkResponse)
-    .catch((res) => {
-      console.log(`Ошибка: ${res.status}`); // "Что-то пошло не так: ..."
-    });
 }
 
 export function createData(url, data) {
@@ -63,9 +54,6 @@ export function deleteData(url) {
     method: "DELETE",
   })
     .then(checkResponse)
-    .catch((res) => {
-      console.log(`Ошибка: ${res.status}`); // "Что-то пошло не так: ..."
-    });
 }
 
 export function enableApi(params) {

@@ -3,7 +3,7 @@ import { getData, deleteData, createData, putData } from "./api";
 import { setUserInfo } from "./modal";
 
 export let cards;
-// export let userProfile = {};
+export let user = {};
 let parameters = {};
 
 function createCard(
@@ -16,7 +16,7 @@ function createCard(
   popUpPicImg,
   cardElement,
   likesArray,
-  userProfile,
+  userProfile
 ) {
   const newCard = cardElement.cloneNode(true);
   const imageCard = newCard.querySelector(parameters.imageCardSelector);
@@ -29,13 +29,12 @@ function createCard(
     titleCardValue;
 
   const buttonLike = newCard.querySelector(parameters.buttonLikeSelector);
-  console.log('likesArray', likesArray);
-  console.log('userProfile', userProfile);
 
-  
-  if (!likesArray.includes(userProfile)) {
-    buttonLike.classList.add(parameters.buttonLikeActiveClass);
-  };
+  likesArray.forEach(({ _id }) => {
+    if (_id === userProfile._id) {
+      buttonLike.classList.add(parameters.buttonLikeActiveClass);
+    }
+  });
 
   buttonLike.addEventListener("click", function (evt) {
     if (!buttonLike.classList.contains(parameters.buttonLikeActiveClass)) {
@@ -88,8 +87,6 @@ function createCard(
   return newCard;
 }
 
-
-
 export function renderCard(newCard, cardElements) {
   cardElements.prepend(newCard);
 }
@@ -119,18 +116,23 @@ export const enableCards = (params) => {
   const profileAvatar = document.querySelector(
     parameters.profileAvatarSelector
   );
-  
-  const allPromise = Promise.all([getData(parameters.userUrl), getData(parameters.urlCards)]);
-  allPromise.then(([userData, cardsData]) => {
-    setUserInfo(userName, userDescription, profileAvatar, userData);
-    
-    const userProfile = {
-      name: userData.name,
-      about: userData.about,
-      avatar: userData.avatar,
-      _id: userData._id,
-      cohort: userData.cohort,
-    };
+
+  const allPromise = Promise.all([
+    getData(parameters.userUrl),
+    getData(parameters.urlCards),
+  ]);
+  allPromise
+    .then(([userData, cardsData]) => {
+      user = userData;
+      setUserInfo(userName, userDescription, profileAvatar, userData);
+
+      const userProfile = {
+        name: userData.name,
+        about: userData.about,
+        avatar: userData.avatar,
+        _id: userData._id,
+        cohort: userData.cohort,
+      };
       cardsData.forEach(function (element) {
         renderCard(
           createCard(
@@ -143,14 +145,13 @@ export const enableCards = (params) => {
             popUpPicImg,
             cardElement,
             element.likes,
-            userProfile,
+            userProfile
           ),
           cardElements
         );
       });
-
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(`Ошибка: ${err.status}`); // "Что-то пошло не так: ..."
     });
 
@@ -193,19 +194,20 @@ export const enableCards = (params) => {
             popUpPicImg,
             cardElement,
             data.likes,
-            {}
+            user
           ),
           cardElements
         );
         closePopUp(popUpAddCard);
         popUpForm.reset();
-        buttonAddCard.textContent = "Создать";
-
         buttonAddCard.disabled = true;
         buttonAddCard.classList.add(parameters.inactiveButtonClass);
       })
       .catch((res) => {
         console.log(`Ошибка: ${res.status}`); // "Что-то пошло не так: ..."
+      })
+      .finally(() => {
+        buttonAddCard.textContent = "Создать";
       });
   });
 };

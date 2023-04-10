@@ -2,7 +2,6 @@ let parameters = {};
 import { openPopUp, closePopUp } from "/src/components/utils";
 import { updateData } from "./api";
 
-
 function addListenerButton(
   button,
   popUpEditCard,
@@ -49,7 +48,7 @@ function addListenerEditProfile(
         console.log(`Ошибка: ${res.status}`); // "Что-то пошло не так: ..."
       })
       .finally(() => {
-         buttonSaveProfile.textContent = "Сохранить";
+        buttonSaveProfile.textContent = "Сохранить";
       });
   });
 }
@@ -61,11 +60,15 @@ function addEventListenerButtonClose(buttonCloseList) {
   });
 }
 
-export function setUserInfo(userName, userDescription, profileAvatar, userData) {
+export function setUserInfo(
+  userName,
+  userDescription,
+  profileAvatar,
+  userData
+) {
   userName.textContent = userData.name;
   userDescription.textContent = userData.about;
   profileAvatar.src = userData.avatar;
-
 }
 
 function addListenerEditAvatarForm(
@@ -93,9 +96,8 @@ function addListenerEditAvatarForm(
         console.log(`Ошибка: ${res.status}`); // "Что-то пошло не так: ..."
       })
       .finally(() => {
-         editAvatarButton.textContent = "Сохранить";
-      })
-      ;
+        editAvatarButton.textContent = "Сохранить";
+      });
   });
 }
 
@@ -152,7 +154,7 @@ export const enableModals = (params) => {
     editAvatarButton,
     sectionUpdateAvatarPopup
   );
-  
+
   const buttonSaveProfile = document.querySelector(
     parameters.buttonSaveProfileSelector
   );
