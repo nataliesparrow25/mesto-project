@@ -1,7 +1,7 @@
 let parameters = {};
 import { openPopUp, closePopUp } from "/src/components/utils";
-import { updateData, getData } from "./api";
-export let userId = "";
+import { updateData } from "./api";
+
 
 function addListenerButton(
   button,
@@ -39,12 +39,18 @@ function addListenerEditProfile(
       name: inputName.value,
       about: inputDescription.value,
     };
-    updateData(parameters.userUrl, userData).then((res) => {
-      userName.textContent = res.name;
-      userDescription.textContent = res.about;
-      closePopUp(popUpEditCard);
-      buttonSaveProfile.textContent = "Сохранить";
-    });
+    updateData(parameters.userUrl, userData)
+      .then((res) => {
+        userName.textContent = res.name;
+        userDescription.textContent = res.about;
+        closePopUp(popUpEditCard);
+      })
+      .catch((res) => {
+        console.log(`Ошибка: ${res.status}`); // "Что-то пошло не так: ..."
+      })
+      .finally(() => {
+         buttonSaveProfile.textContent = "Сохранить";
+      });
   });
 }
 
@@ -55,13 +61,11 @@ function addEventListenerButtonClose(buttonCloseList) {
   });
 }
 
-function getUserInfo(userName, userDescription, profileAvatar) {
-  getData(parameters.userUrl).then((res) => {
-    userName.textContent = res.name;
-    userDescription.textContent = res.about;
-    profileAvatar.src = res.avatar;
-    userId = res._id;
-  });
+export function setUserInfo(userName, userDescription, profileAvatar, userData) {
+  userName.textContent = userData.name;
+  userDescription.textContent = userData.about;
+  profileAvatar.src = userData.avatar;
+
 }
 
 function addListenerEditAvatarForm(
@@ -77,14 +81,21 @@ function addListenerEditAvatarForm(
     const userData = {
       avatar: inputUrlAvatar.value,
     };
-    updateData(parameters.userUpdateAvatarUrl, userData).then((res) => {
-      profileAvatar.src = res.avatar;
-      closePopUp(sectionUpdateAvatarPopup);
-      editAvatarButton.textContent = "Сохранить";
-      document.forms.updateAvatarForm.reset();
-      editAvatarButton.disabled = true;
-      editAvatarButton.classList.add(parameters.inactiveButtonClass);
-    });
+    updateData(parameters.userUpdateAvatarUrl, userData)
+      .then((res) => {
+        profileAvatar.src = res.avatar;
+        closePopUp(sectionUpdateAvatarPopup);
+        document.forms.updateAvatarForm.reset();
+        editAvatarButton.disabled = true;
+        editAvatarButton.classList.add(parameters.inactiveButtonClass);
+      })
+      .catch((res) => {
+        console.log(`Ошибка: ${res.status}`); // "Что-то пошло не так: ..."
+      })
+      .finally(() => {
+         editAvatarButton.textContent = "Сохранить";
+      })
+      ;
   });
 }
 
@@ -141,8 +152,7 @@ export const enableModals = (params) => {
     editAvatarButton,
     sectionUpdateAvatarPopup
   );
-
-  getUserInfo(userName, userDescription, profileAvatar);
+  
   const buttonSaveProfile = document.querySelector(
     parameters.buttonSaveProfileSelector
   );
