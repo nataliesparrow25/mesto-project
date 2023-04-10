@@ -36,6 +36,7 @@ enableModals({
   inactiveButtonClass: "popup__button_inactive",
   buttonSaveProfileSelector: '#button-save-name',
 
+
 });
 
 enableValidation({
@@ -57,7 +58,7 @@ enableCards({
   buttonLikeSelector: ".button-like",
   buttonLikeActiveClass: "button-like_active",
   buttonDeleteCardSelector: ".button-delete-card",
-  sectionPopUpPicSelector: "#section-popup-pic",
+  popUpPicImgSelector: "#section-popup-pic",
   cardElementsSelector: ".photo-grid__cards",
   popUpAddCardSelector: "#section-popup-add-card",
   titleCardInputSelector: "#card-title",
@@ -70,4 +71,10 @@ enableCards({
   photoGridCardInfoSelector: ".photo-grid__card-info",
   likeSelector: '.photo-grid__like-counter',
   urlLike: 'cards/likes',
+
+  userDescriptionSelector: ".profile__user-description",
+  inputNameSelector: ".profile__user-name",
+  profileAvatarSelector: ".profile__avatar",
+  userUrl: "users/me",
+
 });

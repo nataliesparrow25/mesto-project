@@ -20,3 +20,11 @@ export function openPopUp(popup) {
 export const enableUtils = (params) => {
   parameters = params;
 };
+
+export function checkResponse(res) {
+  if (res.ok) {
+    return res.json();
+  }
+  // если ошибка, отклоняем промис
+  return Promise.reject(`Ошибка: ${res.status}`);
+}
